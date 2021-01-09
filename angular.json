@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "satSunBatch"
+  "defaultProject": "satSunBatch",
+  "cli": {
+    "analytics": false
+  }
 }

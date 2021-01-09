@@ -1,0 +1,41 @@
+<h1>Demo Page</h1>
+
+<h1>{{a}}</h1>
+<h1>{{name}}</h1>
+<h1>{{flag}}</h1>
+
+
+<button (click)="onClick()">Click Me</button>
+
+<input type="text" [value]="name">
+
+<input type="text" [(ngModel)]="xyz">
+
+<h1>Value of xyz: {{xyz}}</h1>
+
+<input type="number" [(ngModel)]="no1">
+<input type="number" [(ngModel)]="no2">
+<button (click)="onAddClick()">Add </button>
+<h1>{{ans}}</h1>
+
+
+<input #txt1 (keyup)="0">
+<h1>{{txt1.value}}</h1>
+
+<input type="number" #txtno1>
+<input type="number" #txtno2>
+<button (click)="onAdd1Click(txtno1.value,txtno2.value)">Add </button>
+<h1>ans is {{res}}</h1>
+
+
+<button (click)="onToggelClick()">Toggel Button</button>
+
+<button *ngIf="flag">on/off</button>
+
+<ul>
+  <li *ngFor="let item of numberArr;let i=index;let ev=even;let od=odd" [ngClass]="{odd:od,even:ev}">{{item}} - {{i}}
+  </li>
+</ul>
+<ul>
+  <li *ngFor="let item of numberArr.reverse() ">{{item}} </li>
+</ul>
