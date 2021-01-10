@@ -1,32 +1,72 @@
 <h1>Todo Application</h1>
 
-<table class="table">
-  <thead>
-    <th>
-      Id
-    </th>
-    <th>
-      Title
-    </th>
-    <th>
-      Status
-    </th>
-    <th>
-      Action
-    </th>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of todosArr">
-      <td>{{item.Id}}</td>
-      <td>{{item.Title}}</td>
-      <td [ngClass]="{done: item.Status=='done',pending:item.Status=='pending'}">{{item.Status}}</td>
-      <!-- <td *ngIf="item.Status=='pending'" class="pending">{{item.Status}}</td> -->
-      <td>
-        <button (click)="onDelete(item)" type="button" class="btn btn-default" aria-label="Left Align">
-          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-        </button>
+<div class="container">
 
-      </td>
-    </tr>
-  </tbody>
-</table>
+  <button class="btn btn-info" (click)="onAddButtonClick()">Add</button>
+  <div *ngIf="flag" class="row">
+    <div class="form-group">
+      <label>Id</label>
+      <input class="form-control" [(ngModel)]="Id">
+    </div>
+    <div class="form-group">
+      <label>Title</label>
+      <input class="form-control" [(ngModel)]="Title">
+    </div>
+    <div class="form-group">
+      <label>Status</label>
+      <select class="form-control" [(ngModel)]="Status">
+        <option *ngFor="let item of statusArr">{{item}}</option>
+      </select>
+    </div>
+    <div>
+      <button type="button" class="btn btn-primary" (click)="onSaveButtonClick()">Save</button>
+      <button type="button" class="btn btn-danger" (click)="onCancelButtonClick()">Cancel</button>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <th>
+          Id
+        </th>
+        <th>
+          Title
+        </th>
+        <th>
+          Status
+        </th>
+        <th>
+          Action
+        </th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of todosArr;trackBy:trackByTodoId">
+          <td>{{item.Id}}</td>
+          <td>{{item.Title}}</td>
+          <td [ngClass]="{done: item.Status=='done',pending:item.Status=='pending'}">{{item.Status}}</td>
+          <!-- <td *ngIf="item.Status=='pending'" class="pending">{{item.Status}}</td> -->
+          <td>
+            <button (click)="onDelete(item)" type="button" class="btn btn-default" aria-label="Left Align">
+              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+            </button>
+            <button (click)="onEdit(item)" type="button" class="btn btn-default" aria-label="Left Align">
+              <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+            </button>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button (click)="onRefreshClick()">Refresh</button>
+  </div>
+  <div class="row">
+
+    <button (click)="onClickMe()">Click Me</button>
+
+    <p *ngIf="flag1;else elseblock">I am true block</p>
+    <ng-template #elseblock>
+      <p>I am false block</p>
+    </ng-template>
+
+  </div>
+</div>
