@@ -5,7 +5,7 @@ import { Directive, HostBinding, HostListener, Input } from '@angular/core';
 })
 export class HighlighterDirective {
   bgColor: string;
-  @Input() color: string = 'red';
+  @Input('temp') color: string = 'red';
   constructor() {}
   @HostListener('mouseenter') mouseover() {
     this.bgColor = this.color;

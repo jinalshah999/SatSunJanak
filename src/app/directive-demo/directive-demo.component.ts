@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  ViewChild,
+  ViewChildren,
+} from '@angular/core';
 
 @Component({
   selector: 'app-directive-demo',
@@ -7,6 +13,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DirectiveDemoComponent implements OnInit {
   xyz: string = 'yellow';
+  @ViewChild('ptag') patg: any;
   constructor() {}
 
   ngOnInit(): void {}
