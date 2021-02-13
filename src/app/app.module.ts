@@ -10,9 +10,11 @@ import { HighlighterDirective } from './highlighter.directive';
 import { CreditcardDirective } from './creditcard.directive';
 import { ParentComponent } from './parent/parent.component';
 import { ChildComponent } from './parent/child/child.component';
+import { ProductsComponent } from './products/products.component';
+import { SidebarComponent } from './products/sidebar/sidebar.component';
 
 @NgModule({
-  declarations: [AppComponent, DemoComponent, TodosComponent, DirectiveDemoComponent, HighlighterDirective, CreditcardDirective, ParentComponent, ChildComponent],
+  declarations: [AppComponent, DemoComponent, TodosComponent, DirectiveDemoComponent, HighlighterDirective, CreditcardDirective, ParentComponent, ChildComponent, ProductsComponent, SidebarComponent],
   imports: [BrowserModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],

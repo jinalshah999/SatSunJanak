@@ -1,0 +1,23 @@
+<div class="container">
+  <h2>Product page</h2>
+  <div class="col-md-3">
+    <app-sidebar [categoryfromparent]="category" (myevent)="onMyEvent($event)"></app-sidebar>
+  </div>
+  <div class="col-md-9">
+
+    <div class="row">
+      <div *ngFor="let item of productsarr" class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <img [src]="item.img" alt="...">
+          <div class="caption">
+            <h3>{{item.pname}}</h3>
+            <p>{{item.price}}</p>
+            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default"
+                role="button">Button</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
