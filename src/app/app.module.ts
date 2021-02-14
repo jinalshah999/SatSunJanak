@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { routingarr } from './app.routing';
 
@@ -16,6 +16,7 @@ import { ProductsComponent } from './products/products.component';
 import { SidebarComponent } from './products/sidebar/sidebar.component';
 import { PagenotfountComponent } from './pagenotfount/pagenotfount.component';
 import { HeaderComponent } from './header/header.component';
+import { UserSignupComponent } from './user-signup/user-signup.component';
 
 @NgModule({
   declarations: [
@@ -31,8 +32,9 @@ import { HeaderComponent } from './header/header.component';
     SidebarComponent,
     PagenotfountComponent,
     HeaderComponent,
+    UserSignupComponent,
   ],
-  imports: [BrowserModule, FormsModule, routingarr],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, routingarr],
   providers: [],
   bootstrap: [AppComponent],
 })

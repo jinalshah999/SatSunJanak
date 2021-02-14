@@ -5,6 +5,7 @@ import { PagenotfountComponent } from './pagenotfount/pagenotfount.component';
 import { ParentComponent } from './parent/parent.component';
 import { ProductsComponent } from './products/products.component';
 import { TodosComponent } from './todos/todos.component';
+import { UserSignupComponent } from './user-signup/user-signup.component';
 
 const arr: Routes = [
   //{path:'',redirectTo:'/todo',pathMatch:'full'},
@@ -14,6 +15,7 @@ const arr: Routes = [
   //{ path: 'todo', component: TodosComponent },
   { path: 'directive', component: DirectiveDemoComponent },
   { path: 'parent', component: ParentComponent },
+  { path: 'signup', component: UserSignupComponent },
   { path: 'pagenotfound', component: PagenotfountComponent },
   { path: '**', redirectTo: '/pagenotfound' },
 ];
