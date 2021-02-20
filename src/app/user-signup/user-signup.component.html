@@ -17,7 +17,24 @@
       </label>
     </div>
     <div class="form-group">
+      <input type="radio" formControlName="user_notification" value="email">Email
+      <input type="radio" formControlName="user_notification" value="phone">Phone
+    </div>
+    <div class="form-group">
       <input type="email" formControlName="user_email" class="form-control" placeholder="Enter User Email">
+      <label class="alert alert-danger"
+        *ngIf="user_signup.get('user_email').hasError('required') &&  !user_signup.get('user_email').pristine"> Email is
+        required
+      </label>
+      <label class="alert alert-danger" *ngIf="user_signup.get('user_email').hasError('email')"> email is incorrect
+      </label>
+    </div>
+    <div class="form-group">
+      <input type="text" formControlName="user_mobile" class="form-control" placeholder="Enter Mobile Number">
+      <label class="alert alert-danger"
+        *ngIf="user_signup.get('user_mobile').hasError('required') &&  !user_signup.get('user_mobile').pristine"> phone
+        is required
+      </label>
     </div>
     <div formGroupName="password_group">
       <div class="form-group">
@@ -35,8 +52,25 @@
         nathi
       </label>
     </div>
-    <!-- [disabled]="!user_signup.valid" -->
-    <button type="submit" class="form-control btn btn-primary">Add User</button>
+
+    <div class="form-group">
+      <select class="form-control" formControlName="user_city">
+
+        <option value="-1">Select City</option>
+        <option *ngFor="let item of cities" [value]="item">{{item}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <button type="button" class="btn btn-primary" (click)="onAddHobbyClick()">Add Hobby</button>
+
+      <div class="form-group" formArrayName="user_hobbies" *ngFor="let item of getHobbies();let i=index">
+        <input class="form-control" [formControlName]="i">
+        <button class="btn btn-danger" (click)="onDeleteHobbyClick(i)"> Delete</button>
+      </div>
+    </div>
+    <input type="date">
+    <!--  -->
+    <button type="submit" [disabled]="!user_signup.valid" class="form-control btn btn-primary">Add User</button>
   </form>
 
 </div>
