@@ -1,27 +1,51 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { TododataService } from '../tododata.service';
 import { Todo } from './todo';
 @Component({
   selector: 'app-todos',
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.css'],
 })
-export class TodosComponent implements OnInit {
+export class TodosComponent implements OnInit, OnDestroy {
   flag1: boolean = true;
   flag: boolean = false;
   statusArr: string[] = ['done', 'pending'];
   Id: string;
   Title: string;
   Status: string;
-  todosArr: Todo[] = [
-    new Todo('1', 'go for running', 'pending'),
-    new Todo('2', 'Email to your manager', 'pending'),
-    new Todo('3', 'push your code to github', 'done'),
-  ];
-  constructor() {}
+  todosArr: Todo[] = [];
+  sub: Subscription;
+  constructor(private _todos: TododataService) {}
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.sub = this._todos.getAllTodos().subscribe(
+      (data: Todo[]) => {
+        if (data.length != 0) {
+          this.todosArr = data;
+        }
+      },
+      function (error) {
+        console.log(error);
+      },
+      function () {
+        console.log('complete');
+      }
+    );
+  }
   onDelete(item: Todo): void {
-    this.todosArr.splice(this.todosArr.indexOf(item), 1);
+    if (confirm('Are you sure?')) {
+      this._todos.deleteTodo(item.Id).subscribe((data: any) => {
+        if (data.affectedRows == 1) {
+          this.todosArr.splice(this.todosArr.indexOf(item), 1);
+        } else {
+          alert('something went wrong');
+        }
+      });
+    }
   }
   onEdit(item: Todo): void {
     if (item.Status == 'done') {
@@ -37,11 +61,16 @@ export class TodosComponent implements OnInit {
     this.flag = false;
   }
   onSaveButtonClick(): void {
-    this.todosArr.push(new Todo(this.Id, this.Title, this.Status));
-    this.Id = '';
-    this.Title = '';
-    this.Status = '';
-    this.flag = false;
+    let item: Todo = new Todo(this.Id, this.Title, this.Status);
+    this._todos.addTodos(item).subscribe((data: any) => {
+      this.todosArr.push(item);
+      this.flag = false;
+    });
+    // this.todosArr.push(new Todo(this.Id, this.Title, this.Status));
+    // this.Id = '';
+    // this.Title = '';
+    // this.Status = '';
+    //
   }
   onRefreshClick() {
     this.todosArr = [

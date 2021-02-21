@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { routingarr } from './app.routing';
 
@@ -34,7 +35,13 @@ import { UserSignupComponent } from './user-signup/user-signup.component';
     HeaderComponent,
     UserSignupComponent,
   ],
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule, routingarr],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    routingarr,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
