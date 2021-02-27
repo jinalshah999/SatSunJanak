@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { TododataService } from '../tododata.service';
 import { Todo } from './todo';
@@ -16,7 +17,7 @@ export class TodosComponent implements OnInit, OnDestroy {
   Status: string;
   todosArr: Todo[] = [];
   sub: Subscription;
-  constructor(private _todos: TododataService) {}
+  constructor(private _todos: TododataService, private _router: Router) {}
   ngOnDestroy(): void {
     this.sub.unsubscribe();
   }
@@ -47,12 +48,13 @@ export class TodosComponent implements OnInit, OnDestroy {
       });
     }
   }
+  //localhost:4200/edittodo/1
   onEdit(item: Todo): void {
-    if (item.Status == 'done') {
-      item.Status = 'pending';
-    } else {
-      item.Status = 'done';
-    }
+    this._router.navigate(['/edittodo', item.Id]);
+    // {
+    //   queryParams: { todo_id: item.Id },
+    //   fragment: 'hello',
+    // }
   }
   onAddButtonClick(): void {
     this.flag = true;

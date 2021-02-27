@@ -6,10 +6,12 @@ import { ParentComponent } from './parent/parent.component';
 import { ProductsComponent } from './products/products.component';
 import { TodosComponent } from './todos/todos.component';
 import { UserSignupComponent } from './user-signup/user-signup.component';
+import { EdittodosComponent } from './todos/edittodos/edittodos.component';
 
 const arr: Routes = [
   //{path:'',redirectTo:'/todo',pathMatch:'full'},
   { path: '', component: TodosComponent },
+  { path: 'edittodo/:Id', component: EdittodosComponent },
   { path: 'demo', component: DemoComponent },
   { path: 'product', component: ProductsComponent },
   //{ path: 'todo', component: TodosComponent },

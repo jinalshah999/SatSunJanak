@@ -18,6 +18,7 @@ import { SidebarComponent } from './products/sidebar/sidebar.component';
 import { PagenotfountComponent } from './pagenotfount/pagenotfount.component';
 import { HeaderComponent } from './header/header.component';
 import { UserSignupComponent } from './user-signup/user-signup.component';
+import { EdittodosComponent } from './todos/edittodos/edittodos.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { UserSignupComponent } from './user-signup/user-signup.component';
     PagenotfountComponent,
     HeaderComponent,
     UserSignupComponent,
+    EdittodosComponent,
   ],
   imports: [
     BrowserModule,

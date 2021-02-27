@@ -15,6 +15,9 @@ export class TododataService {
   getAllTodos() {
     return this._http.get(this.url);
   }
+  getTodoById(Id) {
+    return this._http.get(this.url + Id);
+  }
   addTodos(item: Todo) {
     let body = JSON.stringify(item);
     let head = new HttpHeaders().set(this.head1, this.value);
