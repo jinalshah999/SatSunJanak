@@ -7,6 +7,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { CheckEmail } from '../checkEmail';
+import { UserDataService } from '../user-data.service';
 
 @Component({
   selector: 'app-user-signup',
@@ -30,7 +32,7 @@ export class UserSignupComponent implements OnInit {
     }
     return null;
   }
-  constructor() {}
+  constructor(public _userdata: UserDataService) {}
   ngOnInit(): void {
     this.user_signup = new FormGroup({
       user_name: new FormControl(null, [
@@ -39,10 +41,11 @@ export class UserSignupComponent implements OnInit {
         Validators.pattern('[a-zA-Z]*'),
         this.invalidName.bind(this),
       ]),
-      user_email: new FormControl(null, [
-        Validators.required,
-        Validators.email,
-      ]),
+      user_email: new FormControl(
+        null,
+        [Validators.required, Validators.email],
+        CheckEmail.emailValidator(this._userdata)
+      ),
       user_mobile: new FormControl(null),
       user_notification: new FormControl('email'),
       password_group: new FormGroup(

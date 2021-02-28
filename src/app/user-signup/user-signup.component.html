@@ -28,6 +28,11 @@
       </label>
       <label class="alert alert-danger" *ngIf="user_signup.get('user_email').hasError('email')"> email is incorrect
       </label>
+
+      <label style="color:blue" *ngIf="user_signup.get('user_email').status=='PENDING'">Checking...</label>
+      <label style="color:green" *ngIf="user_signup.get('user_email').status=='VALID'">Email is Available</label>
+      <label style="color:red" *ngIf="user_signup.get('user_email').hasError('emailInUse')">Email is already
+        Taken</label>
     </div>
     <div class="form-group">
       <input type="text" formControlName="user_mobile" class="form-control" placeholder="Enter Mobile Number">
