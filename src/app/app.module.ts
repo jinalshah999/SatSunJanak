@@ -19,6 +19,7 @@ import { PagenotfountComponent } from './pagenotfount/pagenotfount.component';
 import { HeaderComponent } from './header/header.component';
 import { UserSignupComponent } from './user-signup/user-signup.component';
 import { EdittodosComponent } from './todos/edittodos/edittodos.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { EdittodosComponent } from './todos/edittodos/edittodos.component';
     HeaderComponent,
     UserSignupComponent,
     EdittodosComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

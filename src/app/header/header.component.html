@@ -21,6 +21,8 @@
         <li routerLinkActive="active"><a routerLink="/product">Product</a></li>
         <li routerLinkActive="active"><a routerLink="/directive">DirectiveDemo</a></li>
         <li routerLinkActive="active"><a routerLink="/signup">SignUp</a></li>
+        <li routerLinkActive="active"><a routerLink="/login" *ngIf="!isLoggedIn">LogIn</a></li>
+        <li routerLinkActive="active"><a (click)="onlogoutClick()" *ngIf="isLoggedIn">LogOut</a></li>
       </ul>
 
     </div><!-- /.navbar-collapse -->

@@ -7,17 +7,28 @@ import { ProductsComponent } from './products/products.component';
 import { TodosComponent } from './todos/todos.component';
 import { UserSignupComponent } from './user-signup/user-signup.component';
 import { EdittodosComponent } from './todos/edittodos/edittodos.component';
+import { LoginComponent } from './login/login.component';
+import { AuthguardService } from './authguard.service';
 
 const arr: Routes = [
   //{path:'',redirectTo:'/todo',pathMatch:'full'},
   { path: '', component: TodosComponent },
   { path: 'edittodo/:Id', component: EdittodosComponent },
   { path: 'demo', component: DemoComponent },
-  { path: 'product', component: ProductsComponent },
+  {
+    path: 'product',
+    canActivate: [AuthguardService],
+    component: ProductsComponent,
+  },
   //{ path: 'todo', component: TodosComponent },
   { path: 'directive', component: DirectiveDemoComponent },
-  { path: 'parent', component: ParentComponent },
+  {
+    path: 'parent',
+    canActivate: [AuthguardService],
+    component: ParentComponent,
+  },
   { path: 'signup', component: UserSignupComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'pagenotfound', component: PagenotfountComponent },
   { path: '**', redirectTo: '/pagenotfound' },
 ];
