@@ -21,6 +21,7 @@ import { UserSignupComponent } from './user-signup/user-signup.component';
 import { EdittodosComponent } from './todos/edittodos/edittodos.component';
 import { LoginComponent } from './login/login.component';
 import { HttpinterceptoresService } from './httpinterceptores.service';
+import { HttploggerService } from './httplogger.service';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,11 @@ import { HttpinterceptoresService } from './httpinterceptores.service';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpinterceptoresService,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttploggerService,
       multi: true,
     },
   ],
