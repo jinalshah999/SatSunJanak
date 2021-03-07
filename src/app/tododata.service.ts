@@ -21,16 +21,16 @@ export class TododataService {
   }
   addTodos(item: Todo) {
     let body = JSON.stringify(item);
-    let head = new HttpHeaders().set(this.head1, this.value);
-    return this._http.post(this.url, body, { headers: head });
+    //let head = new HttpHeaders().set(this.head1, this.value);
+    return this._http.post(this.url, body);
   }
   deleteTodo(id) {
-    let head = new HttpHeaders().set(this.head1, this.value);
-    return this._http.delete(this.url + id, { headers: head });
+    //let head = new HttpHeaders().set(this.head1, this.value);
+    return this._http.delete(this.url + id);
   }
   editTodo(item: Todo) {
     let body = JSON.stringify(item);
-    let head = new HttpHeaders().set(this.head1, this.value);
-    return this._http.put(this.url + item.Id, body, { headers: head });
+    //let head = new HttpHeaders().set(this.head1, this.value);
+    return this._http.put(this.url + item.Id, body);
   }
 }
