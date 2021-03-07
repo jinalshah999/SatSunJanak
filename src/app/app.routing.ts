@@ -9,11 +9,16 @@ import { UserSignupComponent } from './user-signup/user-signup.component';
 import { EdittodosComponent } from './todos/edittodos/edittodos.component';
 import { LoginComponent } from './login/login.component';
 import { AuthguardService } from './authguard.service';
+import { TodoeditguardService } from './todos/todoeditguard.service';
 
 const arr: Routes = [
   //{path:'',redirectTo:'/todo',pathMatch:'full'},
   { path: '', component: TodosComponent },
-  { path: 'edittodo/:Id', component: EdittodosComponent },
+  {
+    path: 'edittodo/:Id',
+    component: EdittodosComponent,
+    canDeactivate: [TodoeditguardService],
+  },
   { path: 'demo', component: DemoComponent },
   {
     path: 'product',
