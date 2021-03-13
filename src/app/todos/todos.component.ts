@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { TododataService } from '../tododata.service';
 import { Todo } from './todo';
@@ -17,25 +17,30 @@ export class TodosComponent implements OnInit, OnDestroy {
   Status: string;
   todosArr: Todo[] = [];
   sub: Subscription;
-  constructor(private _todos: TododataService, private _router: Router) {}
+  constructor(
+    private _todos: TododataService,
+    private _acroute: ActivatedRoute,
+    private _router: Router
+  ) {}
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    // this.sub.unsubscribe();
   }
 
   ngOnInit(): void {
-    this.sub = this._todos.getAllTodos().subscribe(
-      (data: Todo[]) => {
-        if (data.length != 0) {
-          this.todosArr = data;
-        }
-      },
-      function (error) {
-        console.log(error);
-      },
-      function () {
-        console.log('complete');
-      }
-    );
+    this.todosArr = this._acroute.snapshot.data['data'];
+    // this.sub = this._todos.getAllTodos().subscribe(
+    //   (data: Todo[]) => {
+    //     if (data.length != 0) {
+    //       this.todosArr = data;
+    //     }
+    //   },
+    //   function (error) {
+    //     console.log(error);
+    //   },
+    //   function () {
+    //     console.log('complete');
+    //   }
+    // );
   }
   onDelete(item: Todo): void {
     if (confirm('Are you sure?')) {
@@ -50,7 +55,7 @@ export class TodosComponent implements OnInit, OnDestroy {
   }
   //localhost:4200/edittodo/1
   onEdit(item: Todo): void {
-    this._router.navigate(['/edittodo', item.Id]);
+    this._router.navigate(['/todos/edit', item.Id]);
     // {
     //   queryParams: { todo_id: item.Id },
     //   fragment: 'hello',

@@ -4,10 +4,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { routingarr } from './app.routing';
+import { HttploggerService } from './httplogger.service';
+import { HttpinterceptoresService } from './httpinterceptores.service';
 
 import { AppComponent } from './app.component';
 import { DemoComponent } from './demo/demo.component';
-import { TodosComponent } from './todos/todos.component';
 import { DirectiveDemoComponent } from './directive-demo/directive-demo.component';
 import { HighlighterDirective } from './highlighter.directive';
 import { CreditcardDirective } from './creditcard.directive';
@@ -17,17 +18,12 @@ import { ProductsComponent } from './products/products.component';
 import { SidebarComponent } from './products/sidebar/sidebar.component';
 import { PagenotfountComponent } from './pagenotfount/pagenotfount.component';
 import { HeaderComponent } from './header/header.component';
-import { UserSignupComponent } from './user-signup/user-signup.component';
-import { EdittodosComponent } from './todos/edittodos/edittodos.component';
 import { LoginComponent } from './login/login.component';
-import { HttpinterceptoresService } from './httpinterceptores.service';
-import { HttploggerService } from './httplogger.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     DemoComponent,
-    TodosComponent,
     DirectiveDemoComponent,
     HighlighterDirective,
     CreditcardDirective,
@@ -37,8 +33,6 @@ import { HttploggerService } from './httplogger.service';
     SidebarComponent,
     PagenotfountComponent,
     HeaderComponent,
-    UserSignupComponent,
-    EdittodosComponent,
     LoginComponent,
   ],
   imports: [

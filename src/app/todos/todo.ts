@@ -5,3 +5,7 @@ export class Todo {
     public Status: string
   ) {}
 }
+
+export class todoResolve {
+  public constructor(todo: Todo[], error: any) {}
+}
